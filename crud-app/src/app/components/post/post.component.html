@@ -1,0 +1,31 @@
+<h2 class="disaply-4 text-center">My Post App</h2>
+
+<div class="row">
+  <div class="col-6 offset-4">
+    <button class="btn btn-dark text-center" (click)="showPost = !showPost">Add New Post</button>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-6" *ngFor="let post of posts" (click)="onSelectedPost(post)">
+    <div class="card my-list">
+      <div class="card-header">
+        <h5 class="text-center">{{post.title | uppercase}}</h5>
+      </div>
+      <!-- <div class="card-body">
+        <div class="card-text">
+          <p>{{post.body}}</p>
+        </div>
+      </div> -->
+    </div>
+    <br>
+  </div>
+</div>
+
+<app-post-detail *ngIf="Selectedpost" [post]="Selectedpost" 
+(onDeleteEvent)="selectedPost = null"></app-post-detail>
+
+<app-new-post *ngIf="showPost" (PostEvent)="onAddNewPost($event)" 
+(cancelFormEvent) = "showPost = false"></app-new-post>

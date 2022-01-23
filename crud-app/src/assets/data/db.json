@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "id": 102,
+      "title": "shopping",
+      "body": "To shop cloth",
+      "publish": true,
+      "published": true
+    },
+    {
+      "id": 103,
+      "title": "Planting",
+      "body": "To Pot a Plant",
+      "publish": true,
+      "published": false
+    },
+    {
+      "title": "Insurance",
+      "body": "To take health policy",
+      "publish": false,
+      "id": 104
+    },
+    {
+      "title": "Book",
+      "body": "To read a Book",
+      "id": "d3717696-7df1-4a82-801d-f2b333eceb57",
+      "publish": false
+    },
+    {
+      "title": "grocery",
+      "body": "to buy rice",
+      "id": "aa1ee59e-c13a-4eae-9c53-7595424724b6",
+      "publish": false
+    },
+    {
+      "title": "test",
+      "body": "test the interceptor",
+      "id": "3e029200-d335-4a48-9a6d-0ad5308b341c",
+      "publish": false
+    },
+    {
+      "title": "bag",
+      "body": "to buy a bag",
+      "id": "9cfd105a-c5b1-4504-9b59-328e7d136781",
+      "publish": false
+    },
+    {
+      "title": "Toy",
+      "body": "To buy cat toy",
+      "id": "ba8f1b80-6b03-4c27-9e48-c537f9551ef8",
+      "publish": false
+    }
+  ]
+}
