@@ -1,0 +1,17 @@
+<p class="display-4 text-center">Product Component loaded!</p>
+
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a [routerLink]="['overview',101,'iPhone13']">Overview</a>
+      </li>
+      <li class="list-group-item">
+        <a [routerLink]="['specification']" [queryParams]="{'pageNo':99}">Specification</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

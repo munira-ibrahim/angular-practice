@@ -1,0 +1,52 @@
+<!-- <ng-content select="header"></ng-content> -->
+<h5> {{user.FirstName | titlecase}} {{user.LastName | titlecase}}</h5>
+<p>Company: <span [innerText]="user.Company"></span></p>
+<p *ngIf="user.isWorking ; else MyTemplate">Income: <span [innerText]="user.income |currency : 'GBP'"></span></p>
+<p>IsWorking: <span [innerHTML]="user.isWorking"></span></p>
+<p>Date Of Birth: <span [innerHTML]="user.dob | date"></span></p>
+
+<p>Total Votes : {{ user.votes }}
+  <input type="number" [value]="user.votes" (change)="changeUserVotes($event.target.value)">
+  <input type="number" [(ngModel)]="user.votes">
+</p>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item nav-pills">
+    <a class="nav-link my-cursor" [ngClass]="{active : tab===1}" (click)="tab = 1">Comments</a>
+  </li>
+    <li class="nav-item nav-pills">
+      <a class="nav-link my-cursor" [ngClass]="{active : tab===2}"  (click)="tab = 2">Add New Comment</a>
+    </li>
+</ul>
+
+<div [ngSwitch]="tab">
+  <div *ngSwitchCase="1">
+
+    <app-comments [user]="user"></app-comments>
+  
+  </div>
+  
+  <div *ngSwitchCase="2">
+
+    <app-add-comment (AddCommentEvent)="AddNewComment($event)"></app-add-comment>
+
+  </div>
+  <div *ngSwitchDefault>Select any above mentioned tab</div>
+</div>
+
+<ng-template #MyTemplate>
+  <p>Miss. {{user.LastName}} is not Working</p>
+
+</ng-template>
+
+<h1>Counter from User : {{getCounter()}}</h1>
+
+<!-- <ng-content select=".main-content"></ng-content>
+  <ng-content></ng-content>
+  <ng-content select="footer"></ng-content> -->
+
+
+<!--Two way binding(Other way)-->
+
+
+<!--Two Way Binding(Module):Work for change Event only-->

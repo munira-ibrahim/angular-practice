@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-center">Register Form</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+                    <!-- Username field -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control" formControlName="username">
+                        <div class="alert alert-danger" [hidden]="username.valid || username.untouched">
+                            <p>* Some problem with username field</p>
+                            <p [hidden]="!username.hasError('required')">
+                                - Username is mandatory filed
+                            </p>
+                            <p [hidden]="!username.hasError('email')">
+                                - Username should be in proper email format
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" formControlName="password">
+                        <div class="alert alert-danger" [hidden]="password.valid || password.untouched">
+                            <!-- <p>* Some problem with Password field</p> -->
+                            <p [hidden]="!password.hasError('required')">Password is mendatry</p>
+                            <p [hidden]="!password.hasError('minlength')">Password minimum length is 6</p>
+
+                        </div>
+                    </div>
+
+                    <br>
+                    <!-- Confirm Password -->
+                    <!-- <div class="form-group">
+
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" name="confirmPassword" class="form-control" formControlName="">
+                        
+                    </div> -->
+                    <button (click)="addbooks()" class="btn btn-dark">Add Book</button>
+                    <div formArrayName="books">
+                        <div *ngFor="let book of books.controls;index as i">
+                            <input type="text" [formControlName]="i" class="form-control">
+                        </div>
+                    </div>
+                    <!-- Buttons -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-primary btn-block" type="submit">Register</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-warning btn-block" type="button">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<button class="btn btn-dark" (click)="addCourse()">
+Add Course
+</button>
+{{courses.value | json}}
+<div *ngFor="let control of courses.controls;index as i">
+    <input type="text" [formControl]="courses.controls[i]">
+    <button class="btn btn-danger" (click)="removeCourse(i)">Delete</button>
+</div>
+
+<br>
+<br>
+
+<button class="btn btn-dark" (click)="addHobby()">Add Hobby</button>
+{{hobbies.value | json}}
+<div *ngFor="let control of hobbies.controls">
+    <div [formGroup]="control">
+        <input type="text" formControlName="hobbyname">
+        <input type="text" formControlName="frequency">
+    </div>
+</div>

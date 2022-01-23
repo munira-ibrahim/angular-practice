@@ -1,0 +1,18 @@
+
+<ul class="list-group" *ngIf="user.comments.length > 0;else noComment">
+    <li *ngFor="let comments of user.comments" class="list-group-item">
+      <blockquote>
+        <strong>
+          Stars : {{comments.star}}
+        </strong>
+        {{comments.body}}
+        <cite>
+          -{{comments.author}}
+        </cite>
+      </blockquote>
+    </li>
+</ul>
+
+<ng-template #noComment>
+  <p>Be First to Comment!!</p>
+</ng-template>

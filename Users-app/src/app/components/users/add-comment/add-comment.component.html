@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Add Comments</h5>
+        <form action="">
+            <!-- stars -->
+            <div class="form-group">
+                <label for="select">Stars</label>
+                <select name="selStar" [(ngModel)]="comment.star" id="select" class="form-control">
+                    <option  value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <!-- Body -->
+            <div class="form-group">
+                <label for="textarea">Comment</label>
+                <textarea name="txtarea" [(ngModel)]="comment.body" class="form-control" id="textarea" cols="30" rows="10"></textarea>
+            </div>
+            <!-- Author -->
+            <div class="form-group">
+                <label for="my-input">Author</label>
+                <input id="my-input" [(ngModel)]="comment.author" class="form-control" type="text" name="txtAuthor">
+            </div>            
+            <!-- Button -->
+            <button class="btn btn-primary btn-block" (click)="onAddComment()">Add Comment</button>
+        </form>
+    </div>
+</div>

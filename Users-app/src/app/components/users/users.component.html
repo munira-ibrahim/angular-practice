@@ -1,0 +1,17 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of users;index as i;first as isFirst;even as isEven">
+        <div class="row">
+            <div class="col-4 text-center">
+                <app-user-image [user]="user" (childEvent)="OnMoreInfo($event.LastName, $event.Company)"></app-user-image>
+            </div>
+            <div class="col-8">
+                 <!-- Index Value : {{i}} | is this first? {{isFirst}}  | is this Even? {{isEven}}  -->
+                <app-user-info [user]="user">
+                    
+                </app-user-info>
+               
+            </div>
+        </div>
+       
+    </li>
+</ul>
