@@ -1,0 +1,32 @@
+<div class="container">
+    <br>
+    <!-- <div class="card" (click)="DisplayForm()">
+        <div class="card-body text-center my-form">
+
+            Add New Note
+        </div>
+    </div> -->
+
+    <p class="text-center">
+        <a class="btn btn-info btn-lg" (click)="DisplayForm()">
+            <span class="glyphicon glyphicon-cloud"></span> Add New Note
+        </a>
+    </p>
+
+    <app-add-note *ngIf="display" (addedNote)="AddNote($event)">
+
+    </app-add-note>
+
+    <br>
+    <br>
+
+    <h1>Parent Component - Notes</h1>
+    <app-notes-item [notes]="notes" (SelectedNote)="OnNoteSelected($event)">
+
+    </app-notes-item>
+    <br>
+    <br>
+    <app-notes-edit [note]="SelectedNote" (OnEditClick)="EditNote($event)" (OnDeleteClick)="DeleteNote($event)">
+
+    </app-notes-edit>
+</div>

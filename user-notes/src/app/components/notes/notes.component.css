@@ -1,0 +1,9 @@
+.my-form{
+    transition: all 0.3s ease-in;
+    background-color: green;
+  }
+  
+  .my-form:hover{
+    cursor: pointer;
+    background-color: lightgray;
+  }
