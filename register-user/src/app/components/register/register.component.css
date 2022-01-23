@@ -1,0 +1,22 @@
+.btn-margin{
+    margin-left: 10px;
+    
+}
+body
+{
+    font-size: 50px;
+}
+
+.success {
+    border-bottom: 3px green solid;
+}
+.danger {
+    border-bottom: 3px red solid;
+}
+
+.feedback-success{
+    color: green;
+}
+.feedback-danger{
+    color: red;
+}

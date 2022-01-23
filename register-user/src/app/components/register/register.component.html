@@ -1,0 +1,156 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Register User</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="register" action="" novalidate (ngSubmit)="OnSubmit()">
+                        <div class="form-group">
+                            <!-- Title -->
+                            <label for="title1">Title</label><br>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngFor="let title of titles">
+                                <label class="btn">
+                                    <input type="radio" value="Mr" formControlName="title1" name="title1"
+                                        [value]="title">
+                                    {{title}}
+                                </label>
+
+
+                            </div><br><br>
+
+                            <fieldset formGroupName="name">
+                                <!-- FirstName -->
+                                <div class="form-group" [ngClass]="{
+                                    'success': firstName.valid && (firstName.touched || firstName.dirty),
+                                    'danger' : firstName.invalid && (firstName.touched || firstName.dirty)
+                                }">
+                                    <label for="fname" class="form-label">First Name</label>
+                                    <input type="text" name="fname" formControlName="firstName" class="form-control">
+                                </div> <br>
+                                <!-- LastName -->
+                                <div class="form-group" [ngClass]="{
+                                    'success': lastName.valid && (lastName.touched || lastName.dirty),
+                                    'danger' : lastName.invalid && (lastName.touched || lastName.dirty)
+                                }">
+                                    <label for="lname" class="form-label">Last Name</label>
+                                    <input type="text" name="lname" formControlName="lastName" class="form-control">
+                                </div><br>
+                            </fieldset>
+
+                            <!-- Email Id -->
+                            <div class="form-group" [ngClass]="{
+                                'success':email.valid && (email.touched || email.dirty),
+                                'danger' :email.invalid && (email.touched || email.dirty)
+                            }">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" autocomplete="none" formControlName="email" name="email"
+                                    class="form-control">
+
+                            </div><br>
+                            <!-- Error Message -->
+                            <div class="form-control-feedback" *ngIf="email.invalid && (email.touched || email.dirty)">
+                                <p class="feedback-danger" *ngIf="email.errors.required">Email is required</p>
+                                <p class="feedback-danger" *ngIf="email.errors.pattern">
+                                    Email must contains at least @ and hostname[.com/.org] </p>
+                            </div>
+                            <!-- Date Of Birth -->
+                            <div class="form-group">
+                                <label for="dob" class="form-label">Date Of Birth</label>
+                                <input type="date" name="dob" formControlName="dob" class="form-control">
+                            </div><br>
+                            <!-- Role -->
+                            <div class="form-group">
+                                <label for="role" class="form-label">Role</label>
+                                <select name="role" id="" formControlName="role" class="form-control">
+
+                                    <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+                                    
+                                </select>
+                            </div><br>
+                            <!-- EmpID -->
+                            <div class="form-group">
+                                <label for="empId" class="form-label">Employee ID</label>
+                                <input type="text" formControlName="EmpId" name="empId" class="form-control">
+                            </div><br>
+                            <!-- Contact Number -->
+                            <div class="form-group" formGroupName="contactNo">
+                                <label for="contact" class="form-label">Contact Number</label><br>
+                                <li class="list-group-item">
+                                    <select name="countrycode" id="" formControlName="CountryCode" class="float-left">
+                                        <option [value]="code.code" *ngFor="let code of countryCodes">{{code.country}}
+                                        </option>
+                                    </select>
+                                    <input type="number" formControlName="number" name="contact" class="form-control">
+                                </li>
+
+                            </div><br>
+                            <!-- Password -->
+                            <div class="form-group">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password"  formControlName="password" (input)="confirmPassword.updateValueAndValidity()" name="password" class="form-control">
+                            </div><br>
+                            <div class="form-control-feedback" *ngIf="password.invalid && (password.touched || password.dirty)">
+                                  
+                                <p class="feedback-danger" *ngIf="password.errors.minlength">
+                                    Password must be 8 character Long </p>
+                                <p class="feedback-danger" *ngIf="password.errors.required">
+                                    Password is required </p>
+                                    
+                                  
+                            </div>
+                            <!-- Confirm Password -->
+                            <div class="form-group">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" name="confirmPassword" formControlName="confirmPassword"
+                                    class="form-control" [ngClass]="{
+                                        'success':confirmPassword.valid && (confirmPassword.touched || confirmPassword.dirty),
+                                        'danger' :confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)
+                                    }">
+                            </div><br>
+                            <!-- Error Message -->
+                            <div class="form-control-feedback" *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)">
+                                <p class="feedback-danger" *ngIf="confirmPassword.errors?.noMatch">
+                                    Password and confirmPassword should match  </p>  
+                                
+                                <p class="feedback-danger" *ngIf="confirmPassword.errors.required">
+                                    Confirm Password is required </p>
+                                    
+                                  
+                            </div>
+                            <!-- Register -->
+
+                            <div class="card-body">
+                                <button class="btn btn-success btn-block" [disabled]="!register.valid">
+                                    Register
+                                </button>
+                                <button class="btn btn-outline-danger btn-block btn-margin">
+                                    Cancel
+                                </button>
+                                <button class="btn btn-outline-warning btn-block btn-margin">
+                                    Reset
+                                </button>
+                            </div>
+
+                            <!-- Cancel -->
+
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <pre>{{register.value | json}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
