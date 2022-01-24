@@ -28,6 +28,8 @@ import { ProductComponent } from './components/product/product.component';
 import { OverviewComponent } from './components/product/overview/overview.component';
 import { SpecificationComponent } from './components/product/specification/specification.component';
 import { EmployeeModule } from './modules/employee/employee.module';
+import { ChangeDetectionParentComponent } from './components/change-detection-parent/change-detection-parent.component';
+import { ChildComponent } from './components/change-detection-parent/child/child.component';
 
 
 
@@ -54,7 +56,9 @@ import { EmployeeModule } from './modules/employee/employee.module';
     HeaderComponent,
     ProductComponent,
     OverviewComponent,
-    SpecificationComponent
+    SpecificationComponent,
+    ChangeDetectionParentComponent,
+    ChildComponent
   ],
   imports: [  // Register Modules
     BrowserModule,

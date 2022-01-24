@@ -1,0 +1,14 @@
+<p>change-detection-parent works!</p>
+<h1>User: {{user.name}}</h1>
+
+<app-child [user]="user"></app-child>
+
+<button class="btn btn-success" (click)="onReferencechange()"> Change Reference</button>
+<button class="btn btn-warning" (click)="onValuechange()"> Change Value</button>
+
+<div>
+    <ul>
+        <li *ngFor="let fruit of fruits;trackBy : trackBy" >{{fruit.name}}</li>
+    </ul>
+    <button class="btn btn-dark" (click)="onAddItem()">Add Item</button>
+</div>
