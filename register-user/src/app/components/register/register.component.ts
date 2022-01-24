@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, FormGroupName, Validators,
   ReactiveFormsModule,ValidatorFn } from '@angular/forms';
 
 import { debounceTime} from "rxjs/operators";
+import { CustomValidator } from 'src/app/Validator/custom-validator';
 
 @Component({
   selector: 'app-register',
@@ -74,7 +75,7 @@ export class RegisterComponent implements OnInit {
     this.confirmPassword = new FormControl("",[
       Validators.required,
       Validators.minLength(8),
-      this.confirmEquals()
+      CustomValidator.passwordMatch
       
     ]);
 
@@ -84,15 +85,15 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  confirmEquals(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null =>  
-        control.value?.toLowerCase() === this.passwordValue.toLowerCase() 
-            ? null : {noMatch: true};
-  }
+  // confirmEquals(): ValidatorFn {
+  //   return (control: AbstractControl): { [key: string]: any } | null =>  
+  //       control.value?.toLowerCase() === this.passwordValue.toLowerCase() 
+  //           ? null : {noMatch: true};
+  // }
 
-  get passwordValue() {
-    return this.password.value;
-  }
+  // get passwordValue() {
+  //   return this.password.value;
+  // }
 
 
   
