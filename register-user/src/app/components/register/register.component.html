@@ -90,8 +90,14 @@
                             <!-- Password -->
                             <div class="form-group">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password"  formControlName="password" (input)="confirmPassword.updateValueAndValidity()" name="password" class="form-control">
+                                <input type="password"  formControlName="password" 
+                                (input)="confirmPassword.updateValueAndValidity()" name="password" 
+                                class="form-control" [ngClass]="{
+                                    'success':password.valid && (password.touched || password.dirty),
+                                    'danger' :password.invalid && (password.touched || password.dirty)
+                                }">
                             </div><br>
+                            <!-- Error Message -->
                             <div class="form-control-feedback" *ngIf="password.invalid && (password.touched || password.dirty)">
                                   
                                 <p class="feedback-danger" *ngIf="password.errors.minlength">
@@ -110,15 +116,16 @@
                                         'danger' :confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)
                                     }">
                             </div><br>
+                            
                             <!-- Error Message -->
-                            <div class="form-control-feedback" *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)">
-                                <p class="feedback-danger" *ngIf="confirmPassword.errors?.noMatch">
+                            <div class="form-control-feedback" 
+                            *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)">
+                                <p class="feedback-danger" *ngIf="confirmPassword.errors.noMatch">
                                     Password and confirmPassword should match  </p>  
                                 
                                 <p class="feedback-danger" *ngIf="confirmPassword.errors.required">
                                     Confirm Password is required </p>
                                     
-                                  
                             </div>
                             <!-- Register -->
 
