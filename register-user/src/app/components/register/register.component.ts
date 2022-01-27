@@ -143,7 +143,9 @@ export class RegisterComponent implements OnInit {
     this.register.reset();
   }
 
- 
+  OnReset(){
+    this.register.reset(); 
+  }
   
   
 

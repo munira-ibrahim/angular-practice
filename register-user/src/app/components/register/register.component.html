@@ -64,7 +64,7 @@
                             <!-- Role -->
                             <div class="form-group">
                                 <label for="role" class="form-label">Role</label>
-                                <select name="role" id="" formControlName="role" class="form-control">
+                                <select name="role" id="role" formControlName="role" class="form-control">
 
                                     <option [value]="role" *ngFor="let role of roles">{{role}}</option>
                                     
@@ -79,7 +79,7 @@
                             <div class="form-group" formGroupName="contactNo">
                                 <label for="contact" class="form-label">Contact Number</label><br>
                                 <li class="list-group-item">
-                                    <select name="countrycode" id="" formControlName="CountryCode" class="float-left">
+                                    <select name="countrycode" id="countrycode" formControlName="CountryCode" class="float-left">
                                         <option [value]="code.code" *ngFor="let code of countryCodes">{{code.country}}
                                         </option>
                                     </select>
@@ -136,7 +136,7 @@
                                 <button class="btn btn-outline-danger btn-block btn-margin">
                                     Cancel
                                 </button>
-                                <button class="btn btn-outline-warning btn-block btn-margin">
+                                <button class="btn btn-outline-warning btn-block btn-margin" (click)="OnReset()">
                                     Reset
                                 </button>
                             </div>

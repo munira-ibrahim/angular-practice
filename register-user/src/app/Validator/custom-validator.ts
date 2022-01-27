@@ -1,12 +1,11 @@
-import { AbstractControl, FormControl, Validators } from "@angular/forms";
+import { AbstractControl,Validators } from "@angular/forms";
 
 export class CustomValidator extends Validators{
     
 
     static passwordMatch(control : AbstractControl){
-        
-        
-        console.log(control.value)
+       
+        //console.log(control.value)
         // return (control: AbstractControl): { [key: string]: any } | null =>  
         if(control.parent){
             return control.value === control.parent.get('password').value 
