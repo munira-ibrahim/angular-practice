@@ -2,13 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 
+import {FormsModule} from '@angular/forms';
+
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      imports :[FormsModule]
     })
     .compileComponents();
   });
@@ -58,5 +61,49 @@ describe('LoginComponent', () => {
   let str  = component.result;
   expect(str).toBe("Welcome to Admin");
 });
+
+//6. Testing Component template ---> Legend tag
+it('should generate "User Login" in legend tag', () => {
+  const tagobj = fixture.nativeElement.querySelector("legend");
+  let str  = tagobj.textContent;
+  expect(str).toBe("User Login");
+});
+
+//7. Testing Component template ---> paragraph tag
+it('should generate paragraph empty', () => {
+  const tagobj = fixture.nativeElement.querySelector("p");
+  let str  = tagobj.textContent;
+  expect(str).toBe("");
+});
+
+//7. Testing Component template ---> input field -uid
+it('should set the value for user Id textbox', () => {
+  const inputobj = fixture.nativeElement.querySelector("input");
+  inputobj.value = "Scott";
+  inputobj.dispatchEvent(new Event("input"));
+  let str  = component.uid;
+  expect(str).toBe("Scott");
+});
+
+it('should generate invalid message when user click the button without textbox value', () => {
+  const inputobj = fixture.nativeElement.querySelectorAll("input");
+  inputobj[2].dispatchEvent(new Event("click"));
+  
+  fixture.detectChanges();
+  const tagobj = fixture.nativeElement.querySelector("p");
+  
+  let str  = tagobj.textContent;
+  expect(str).toBe("Invalid user id or password");
+  
+  
+});
+
+it('should do something….', (done: any) => {
+
+  expect(true).toBe(false);
+
+});
+
+
 
 });

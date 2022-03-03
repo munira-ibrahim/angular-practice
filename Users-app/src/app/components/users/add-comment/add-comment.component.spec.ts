@@ -15,6 +15,7 @@ describe('AddCommentComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AddCommentComponent);
+    
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

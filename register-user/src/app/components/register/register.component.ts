@@ -79,6 +79,9 @@ export class RegisterComponent implements OnInit {
       
     ]);
 
+    let s2 : any = "abc";
+    console.log(s2.toUpperCase())
+
    
     
 
